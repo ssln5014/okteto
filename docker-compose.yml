@@ -7,9 +7,9 @@ services:
     ports:
       - "8080:8080" 
     volumes: 
-      - ./data/db:/root/.zfile-v4/db
-      - ./data/logs:/root/.zfile-v4/logs
-      - ./data/mnt:/data/file
+      - data/db:/root/.zfile-v4/db
+      - data/logs:/root/.zfile-v4/logs
+      - data/mnt:/data/file
     restart: always
 
   lsky:
@@ -18,7 +18,7 @@ services:
     ports:
       - "8089:8089" 
     volumes: 
-      - ./data:/var/www/html/
+      - data2:/var/www/html/
     restart: always
 
   ac:
@@ -27,15 +27,17 @@ services:
     ports:
       - "12303:12303" 
     volumes: 
-      - ./data:/var/www/html/
+      - data1:/var/www/html/
     restart: always
     environment:
       - API_KEY=sk-pz4NgxsmsWz7dwjTwsCttQ3rsGRC5dlLf7IhtTg80CDhUzn6
       - WEB_PORT=12303
       - API_URL_REDIRECT={"https://api.openai.com/v1/chat/completions":"https://api.chatanywhere.com.cn/v1/chat/completions"}
 
-# volumes:
-    # ql:
+volumes:
+    data:
+    data1:
+    data2:
     # driver_opts:
     #   size: 4Gi
 
