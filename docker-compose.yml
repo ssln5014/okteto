@@ -31,7 +31,6 @@ services:
     restart: always
     environment:
       API_KEY: sk-pz4NgxsmsWz7dwjTwsCttQ3rsGRC5dlLf7IhtTg80CDhUzn6
-      LLM_MODEL: gpt-3.5-turbo
       WEB_PORT: 12303
       ADD_WAIFU: false
       API_URL_REDIRECT: {"https://api.openai.com/v1/chat/completions": "https://api.chatanywhere.com.cn/v1/chat/completions"}
