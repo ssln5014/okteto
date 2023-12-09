@@ -1,20 +1,18 @@
 version: '3'
 services:
   1panel:
-    container_name: 1panel # 容器名
+    container_name: panel # 容器名
     image: moelin/1panel:latest
-    labels:  
-      createdBy: "Apps"
     restart: always
     volumes:
       # - /var/run/docker.sock:/var/run/docker.sock
       # - /var/lib/docker/volumes:/var/lib/docker/volumes
       # - /opt:/opt  # 文件存储映射
-      - 1panel:/
+      - panel:/
     environment:
       - TZ=Asia/Shanghai  # 时区设置
 
 volumes:
-  1panel:
+  panel:
     driver_opts:
-      size: 3Gi
+      size: 4Gi
