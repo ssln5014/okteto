@@ -7,8 +7,8 @@ services:
     ports:
       - "3002:3002" 
     environment:
-      - OPENAI_API_BASE_URL= https://api.chatanywhere.cn
-      - OPENAI_API_KEY= sk-Gf0uIYDWuI0R0hNqIotYtQskwS6I1AWCbxCQiGK8qGOVl3dP
+      - OPENAI_API_BASE_URL=https://api.chatanywhere.com.cn
+      - OPENAI_API_KEY=sk-Gf0uIYDWuI0R0hNqIotYtQskwS6I1AWCbxCQiGK8qGOVl3dP
     restart: always
 
   lsky:
