@@ -1,18 +1,44 @@
-version: '3'
-services:
-  panel:
-    container_name: panel # 容器名
-    image: moelin/1panel:latest
-    restart: always
-    volumes:
-      # - /var/run/docker.sock:/var/run/docker.sock
-      # - /var/lib/docker/volumes:/var/lib/docker/volumes
-      # - /opt:/opt  # 文件存储映射
-      - panel:/
-    environment:
-      - TZ=Asia/Shanghai  # 时区设置
+version: "3"
 
-volumes:
-  panel:
-    driver_opts:
-      size: 4Gi
+services:
+  zfile:
+    container_name: zfile
+    image: zhaojun1998/zfile:latest
+    ports:
+      - "8080:8080" 
+    volumes: 
+      - ./data/db:/root/.zfile-v4/db
+      - ./data/logs:/root/.zfile-v4/logs
+      - ./data/mnt:/data/file
+    restart: always
+
+  lsky:
+    container_name: lsky
+    image: halcyonazure/lsky-pro-docker:latest
+    ports:
+      - "8089:8089" 
+    volumes: 
+      - ./data:/var/www/html/
+    restart: always
+
+  ac:
+    container_name: ac
+    image: ghcr.io/binary-husky/gpt_academic_with_latex:master
+    ports:
+      - "12303:12303" 
+    volumes: 
+      - ./data:/var/www/html/
+    restart: always
+    environment:
+      API_KEY: sk-pz4NgxsmsWz7dwjTwsCttQ3rsGRC5dlLf7IhtTg80CDhUzn6
+      LLM_MODEL: gpt-3.5-turbo
+      AVAIL_LLM_MODELS: ["gpt-3.5-turbo", "api2d-gpt-3.5-turbo", "gpt-4", "api2d-gpt-4", "newbing"]
+      WEB_PORT: 12303
+      ADD_WAIFU: false
+      API_URL_REDIRECT: {"https://api.openai.com/v1/chat/completions": "https://api.chatanywhere.com.cn/v1/chat/completions"}
+
+# volumes:
+    # ql:
+    # driver_opts:
+    #   size: 4Gi
+
