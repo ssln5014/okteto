@@ -1,6 +1,6 @@
 version: '3'
 services:
-  1panel:
+  panel:
     container_name: panel # 容器名
     image: moelin/1panel:latest
     restart: always
