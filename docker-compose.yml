@@ -6,7 +6,6 @@ services:
     labels:  
       createdBy: "Apps"
     restart: always
-    network_mode: "host"
     volumes:
       # - /var/run/docker.sock:/var/run/docker.sock
       # - /var/lib/docker/volumes:/var/lib/docker/volumes
